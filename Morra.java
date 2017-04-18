@@ -178,8 +178,10 @@ computerPoints = 0; // Resetting before nect game
 	// print game winners
 	JOptionPane.showMessageDialog(null,"Game results were: ");
 		len = g; g = 0; //moving length to len, and then zero game counter.
-		while (g < len){g = g + 1;
-			JOptionPane.showMessageDialog(null,"Game winner: " + g + " - " + historyGameWinner[g]);}
+		while (g < len){
+			g = g + 1;
+			JOptionPane.showMessageDialog(null,"Game winner: " + g + " - " + historyGameWinner[g]);
+		}
 
 	// Game ends
 		JOptionPane.showMessageDialog(null,"Thank you for playing.\nMorra v.1.1\nGame created by: Elmarie Fryer, Filip Minarik, Raymond Oconnor & Heino Vakkilainen");							
