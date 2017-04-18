@@ -70,21 +70,16 @@ while (choiceNumberPlayer > 10) //while loop until player chooses 0 to 10
 						choiceNumberPlayer = sc.nextInt();}
 
 // ACTUAL GAME STARTS
-choiceNumberComputer = rand.nextInt(10) + 1; //Computer chooses random number
-rand = new Random();
-System.out.println("***   ***   ***   ***   ***   ***"); //adding empty row to make it cleaner to user.
-	System.out.println("Your choice was: " + choiceNumberPlayer);
-	System.out.println("Computer choice was: " + choiceNumberComputer);
+	choiceNumberComputer = rand.nextInt(10) + 1; //Computer chooses random number
+	rand = new Random();
+	r = r + 1; //adding 1 to round counter.
 
-r = r + 1; //adding 1 to round counter.
+	historyOfChoisesPlayer[r] = choiceNumberPlayer;	//store computer and player choises - storing user choise
+	HistoryOfChoisesComputer[r] = choiceNumberComputer; 	//store computer and player choises storing - computer choise
+	resultChoisesCombined = choiceNumberPlayer + choiceNumberComputer;		// to make choice odd or Evens
 
-// store computer and player choises
-	historyOfChoisesPlayer[r] = choiceNumberPlayer;	//storing user choise
-	HistoryOfChoisesComputer[r] = choiceNumberComputer; 	//storing computer choise
+	JOptionPane.showMessageDialog(null,"Your choice was: " + choiceNumberPlayer+"\nComputer choice was: " + choiceNumberComputer+"\nCombined this is: " + resultChoisesCombined);
 
-// to make choice odd or Evens
-	resultChoisesCombined = choiceNumberPlayer + choiceNumberComputer;
-		System.out.println("Combined this is: " + resultChoisesCombined);
 
 // if clause for if Player was closer. Give player 1 bonus point
 		if (choiceNumberPlayer > choiceNumberComputer) {
@@ -112,16 +107,16 @@ if (choiceNumberPlayer < choiceNumberComputer) {
 	if (resultChoisesCombined == 1){ oddOrEven = "Odd ";} //
 	historyOddorEven[r] = oddOrEven; //storing odd or Even
 
-	System.out.print("This is: " + oddOrEven + "-number. You are playing as " + playerChoiceOddsText);
+	JOptionPane.showMessageDialog(null,"This is: " + oddOrEven + "-number. You are playing as " + playerChoiceOddsText);
 
 // Player gets 2 points if same choise
 if (resultChoisesCombined == playerChoiceOdds)
 	{	playerPoints = playerPoints + 2; //adding one to player wins
 		gamePointsTotal = playerPoints; //to make sure game ends when Computer reaches 6 wins
 		gameWinner = "Player"; // name winner each round
-  	historyPointsPerRound[r] = historyPointsPerRound[r] + 2; //adding 2 if won
+  		historyPointsPerRound[r] = historyPointsPerRound[r] + 2; //adding 2 if won
 		historyWinsPlayer[r] = 1; //adding 1 if player won round
-		System.out.print(". You WIN");	}
+		JOptionPane.showMessageDialog(null,"You WIN!");	}
 
 // Computer gets 2 points if Player did not get
 else {
@@ -129,23 +124,10 @@ else {
 			gamePointsTotal = computerPoints; //to make sure game ends when Computer reaches 6 wins
 			gameWinner = "Computer"; // name winner each round
 			historyWinsPlayer[r] = 0; //adding 0 as player lost round
-			System.out.print(". You LOSE");	}
+			JOptionPane.showMessageDialog(null,"You LOSE!");	}
 
 // Show results of Round.
 	JOptionPane.showMessageDialog(null,"Player who is closes receives a bonus point.\nYou received "+ playerPointsBonus + " bonus points.\n\nPoints this game are:\nYou have Received: " + playerPoints + " points\nComputer has Received: " + computerPoints + " points");
-System.out.println(" ");
-System.out.println(" ");
-System.out.println("Player who is closes receives a bonus point. You received " + playerPointsBonus + " bonus points");
-System.out.println("***   ***   ***   ***   ***   ***");
-System.out.println(" ");
-System.out.println("Points this game are:");
-System.out.println("You have Received: " + playerPoints + " points");
-System.out.println("Computer has Received: " + computerPoints + " points");
-System.out.println(" ");
-System.out.println("***   ***   ***   ***   ***   ***");
-System.out.println("*.* *.* *.* *.* *.* *.* *.* *.* *.* *.* *.* *.* *.* *.*");
-System.out.println(" ");
-System.out.println(" ");
 
 choiceNumberPlayer = 11 ; //setting to 11 to force loop again.
 
@@ -179,12 +161,11 @@ computerPoints = 0; // Resetting before nect game
 
 	while (r < len) {
 		r = r + 1; //adding 1 to round counter.
- 		JOptionPane.showMessageDialog(null,"Round: " + r + " - " + historyOddorEven[r] + " - \nYour choice: " + historyOfChoisesPlayer[r]+"\n - Computer choice: " + HistoryOfChoisesComputer[r];
+ 		JOptionPane.showMessageDialog(null,"Round: " + r + " - " + historyOddorEven[r] + " - \nYour choice: " + historyOfChoisesPlayer[r]+"\n - Computer choice: " + HistoryOfChoisesComputer[r]);
  
   		}
 
 // Print totals
-System.out.println(" ");
 
 			r = 0; 	//zeroing r (round) as used counter above.
 			while (r < len)
@@ -192,16 +173,13 @@ System.out.println(" ");
 					sumRound = sumRound + historyWinsPlayer[r]; //loop to sum player wins
 					sumTotal = sumTotal + historyPointsPerRound[r]; //loop to sum all
 					sumBonus = sumBonus + historyOfBonusPoint[r]; } 	//loop to sum all
-					System.out.println("Total rounds won was: " + sumRound + " out of " + r + " rounds");
-					System.out.println("Total points you received are: " + sumTotal);
-					System.out.println("Total Extra Points you received are: " + sumBonus);
+					JOptionPane.showMessageDialog(null,"Total rounds won was: " + sumRound + " out of " + r + " rounds\nTotal points you received are: " + sumTotal+"\nTotal Extra Points you received are: " + sumBonus);
 
-// print game winners
-System.out.println(" ");
-System.out.println("Game results were: ");
-len = g; g = 0; //moving length to len, and then zero game counter.
-while (g < len){g = g + 1;
-					System.out.println("Game winner: " + g + " - " + historyGameWinner[g]);}
+	// print game winners
+	JOptionPane.showMessageDialog(null,"Game results were: ");
+		len = g; g = 0; //moving length to len, and then zero game counter.
+		while (g < len){g = g + 1;
+			JOptionPane.showMessageDialog(null,"Game winner: " + g + " - " + historyGameWinner[g]);}
 
 	// Game ends
 		JOptionPane.showMessageDialog(null,"Thank you for playing.\nMorra v.1.1\nGame created by: Elmarie Fryer, Filip Minarik, Raymond Oconnor & Heino Vakkilainen");							
