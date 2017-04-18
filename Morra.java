@@ -1,5 +1,13 @@
-import java.util.Scanner;
-import java.util.Random;
+/**
+NCIRL Diploma in Computing: CA4
+Elmarie Fryer, Filip Minarik, Raymond Oconnor & Heino Vakkilainen
+*/
+
+// Import Java utilities for use in this program
+import java.util.Scanner;				// for input/output via the command line - used to test the program
+import javax.swing.JOptionPane;			// for input/output via the java pane - used for the final program
+import java.util.Random;				// to generate random numbers for use by the player's opponent (the computer)
+
 public class Morra {
 
 	public static void main(String args[]) {
@@ -40,15 +48,9 @@ public class Morra {
 		int g = 0; // used to count games
 		int len = 0; //used to store length of round
 
-System.out.println("");
-System.out.println("");
-System.out.println("***   ***   ***   ***   ***   ***");
-System.out.println("WELLCOME to Morra v.1.2");
-System.out.println("Game created by: Elmarie Fryer, Filip Minarik, Raymond Oconnor & Heino Vakkilainen");
-System.out.println("In this variation of the game, one player is going to be the “Odds” player and the other player is the “Evens” player. In each round of the game, the players will simultaneously hold out between 0 and 10 ﬁngers. The winner of the round is decided based on the sum of ﬁngers shown by both players, namely if the sum is an even number then the “Evens” player wins, otherwise if the sum is an odd number then the “Odds” player wins. The winner of the round receives two points.  In addition, the player whose number of fingers is closer to the sum, receives one extra point.");
-System.out.println("***   ***   ***   ***   ***   ***");
-System.out.println("");
-System.out.println("");
+	// Game input - start with a welcome message
+		JOptionPane.showMessageDialog(null, "WELCOME to Morra v1.1\nGame created by: Elmarie Fryer, Filip Minarik, Raymond Oconnor & Heino Vakkilainen\n\nIn this variation of the game, one player is going to be the “Odds” player and the other player is the “Evens” player.\nIn each round of the game, the players will simultaneously hold out between 1 and 10 ﬁngers.\nThe winner of the round is decided based on the sum of ﬁngers shown by both players,\nnamely if the sum is an even number then the “Evens” player wins,\notherwise if the sum is an odd number then the “Odds” player wins\nThe winner of the round receives two points.\nIn addition, the player whose number of fingers is closer to the sum, receives one extra point.");
+
 
 //while loop while player chooses Odd or Even
 while (playerChoiceOdds > 1) {
@@ -130,6 +132,7 @@ else {
 			System.out.print(". You LOSE");	}
 
 // Show results of Round.
+	JOptionPane.showMessageDialog(null,"Player who is closes receives a bonus point.\nYou received "+ playerPointsBonus + " bonus points.\n\nPoints this game are:\nYou have Received: " + playerPoints + " points\nComputer has Received: " + computerPoints + " points");
 System.out.println(" ");
 System.out.println(" ");
 System.out.println("Player who is closes receives a bonus point. You received " + playerPointsBonus + " bonus points");
@@ -143,6 +146,7 @@ System.out.println("***   ***   ***   ***   ***   ***");
 System.out.println("*.* *.* *.* *.* *.* *.* *.* *.* *.* *.* *.* *.* *.* *.*");
 System.out.println(" ");
 System.out.println(" ");
+
 choiceNumberPlayer = 11 ; //setting to 11 to force loop again.
 
 //adding to ensure game ends if one player wins round, but other gets 6 points via Bonus point.
@@ -151,11 +155,9 @@ if (playerPoints == 6 && computerPoints < 6){gamePointsTotal = playerPoints; gam
 
 			} // While (gamePointsTotal < 6)
 
-// AFTER PLAYER HAS 6 points.
-System.out.println("***   ***   ***   ***   ***   ***");
-System.out.println("Game ends ");
-System.out.println("Thank you for playing. ");
-System.out.println("Winner is " + gameWinner);
+	// AFTER PLAYER HAS 6 points.
+		JOptionPane.showMessageDialog(null,"Game ends\nThank you for playing.\nWinner is "+gameWinner);
+
 
 g = g + 1; // Add one to G (game counter)
 historyGameWinner[g] = gameWinner; //Store Game winner into String
@@ -171,17 +173,15 @@ computerPoints = 0; // Resetting before nect game
 } //while (Continue.equals("y"))
 
 // AFTER USER ENDS GAME
-System.out.println(" ");
-System.out.println("HISTORY: ");
-	System.out.println("You were playing as " + playerChoiceOddsText);
-len = r; r = 0; // Store round counter (r) into length (len). Zero out r
+	JOptionPane.showMessageDialog(null,"HISTORY: \nYou were playing as "+ playerChoiceOddsText);
 
-while (r < len)
-	{r = r + 1; //adding 1 to round counter.
-	System.out.println(" ");
-	System.out.print("Round: " + r + " - " + historyOddorEven[r] + " - ");
-	System.out.print("Your choise: " + historyOfChoisesPlayer[r]);
-  System.out.print(" - Computer choice: " + HistoryOfChoisesComputer[r]);	}
+	len = r; r = 0; // Store round counter (r) into length (len). Zero out r
+
+	while (r < len) {
+		r = r + 1; //adding 1 to round counter.
+ 		JOptionPane.showMessageDialog(null,"Round: " + r + " - " + historyOddorEven[r] + " - \nYour choice: " + historyOfChoisesPlayer[r]+"\n - Computer choice: " + HistoryOfChoisesComputer[r];
+ 
+  		}
 
 // Print totals
 System.out.println(" ");
@@ -203,10 +203,8 @@ len = g; g = 0; //moving length to len, and then zero game counter.
 while (g < len){g = g + 1;
 					System.out.println("Game winner: " + g + " - " + historyGameWinner[g]);}
 
-System.out.println(" ");
-System.out.println("Thank you for playing");
-System.out.println("Morra v.1.2");
-System.out.println("Game created by: Elmarie Fryer, Filip Minarik, Raymond Oconnor & Heino Vakkilainen");
-System.out.println("***   ***   ***   ***   ***   ***");
+	// Game ends
+		JOptionPane.showMessageDialog(null,"Thank you for playing.\nMorra v.1.1\nGame created by: Elmarie Fryer, Filip Minarik, Raymond Oconnor & Heino Vakkilainen");							
+
 } //	end of public static void main(String args[])
 } //  end of public class Morra
